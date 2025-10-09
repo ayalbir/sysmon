@@ -1,4 +1,3 @@
-markdown
 # Development Log
 
 In this file, I will document my daily progress, challenges faced, and resources used while working on the project.
@@ -23,3 +22,20 @@ In this file, I will document my daily progress, challenges faced, and resources
 - used the [psutil documentation](https://psutil.readthedocs.io/en/latest/) to understand how to fetch CPU and memory usage.
 
 ---
+
+## [21-09-2025]
+
+
+**What I did:**
+- After finishing reading the psutil documentation, I moved on to the next topic. - I prompted ChatGPT to explain the libraries mentioned in the project description, specifically `psutil`, `rich` and `curses`, to have a better understanding of their functionalities and how they can be integrated into the project.
+- ChatGPT recommended starting with `rich` for creating a colored terminal UI, as it is more user-friendly and modern compared to `curses` (which it noted is more low-level, complex, and not cross-platform).
+- The AI also recommended looking into `argparse` and `logging` libraries for handling command-line arguments and logging functionalities, respectively.
+- As noted - I have never encountered all of the mentioned libraries before, so I will need to spend some time learning them.
+
+---
+
+## [09-10-2025]
+
+**What I did:**
+- Started working on the basic functionality of the SysMon tool. I looked online for examples of how to use `psutil` to fetch CPU, memory, and disk usage statistics.
+- Implemented a simple script that retrieves and prints the current CPU and memory usage to the console.
