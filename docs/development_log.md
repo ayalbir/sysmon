@@ -39,3 +39,10 @@ In this file, I will document my daily progress, challenges faced, and resources
 **What I did:**
 - Started working on the basic functionality of the SysMon tool. I looked online for examples of how to use `psutil` to fetch CPU, memory, and disk usage statistics.
 - Implemented a simple script that retrieves and prints the current CPU and memory usage to the console.
+
+---
+
+## [12-10-2025]
+
+**What I did:**
+- Added command-line argument parsing using the `argparse` library. This allows users to specify options like update interval and the number of bars for the usage display.

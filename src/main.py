@@ -3,7 +3,7 @@ import time
 import argparse
 
 
-def display_usage(cpu_usage, memory_usage, bars=50):
+def display_usage(cpu_usage, memory_usage, bars):
     cpu_percent = cpu_usage / 100.0
     cpu_bars = '█' * int(cpu_percent * bars) + '-' * \
         (bars - int(cpu_percent * bars))
