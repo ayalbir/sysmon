@@ -1,7 +1,6 @@
 import psutil
 import time
 import argparse
-from rich import print
 
 
 def display_usage(cpu_usage, memory_usage, bars=50):
