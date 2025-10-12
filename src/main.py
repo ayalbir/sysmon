@@ -3,7 +3,7 @@ import time
 import argparse
 
 
-def display_usage(cpu_usage, memory_usage, bars):
+def display_usage(cpu_usage, memory_usage, disk_usage, bars):
     cpu_percent = cpu_usage / 100.0
     cpu_bars = '█' * int(cpu_percent * bars) + '-' * \
         (bars - int(cpu_percent * bars))
@@ -12,8 +12,13 @@ def display_usage(cpu_usage, memory_usage, bars):
     memory_bars = '█' * int(memory_percent * bars) + \
         '-' * (bars - int(memory_percent * bars))
 
+    disk_percent = disk_usage / 100.0
+    disk_bars = '█' * int(disk_percent * bars) + '-' * \
+        (bars - int(disk_percent * bars))
+
     print(f"\rCPU Usage: |{cpu_bars}| {cpu_usage:.2f}%  ", end='')
-    print(f"Memory Usage: |{memory_bars}| {memory_usage:.2f}%", end='\r')
+    print(f"Memory Usage: |{memory_bars}| {memory_usage:.2f}%", end='')
+    print(f"Disk Usage: |{disk_bars}| {disk_usage:.2f}%", end='\r')
 
 
 def parse_args():
@@ -41,7 +46,8 @@ def main():
     while True:
         cpu = psutil.cpu_percent()
         mem = psutil.virtual_memory().percent
-        display_usage(cpu, mem, args.bars)
+        disk = psutil.disk_usage('/').percent
+        display_usage(cpu, mem, disk, args.bars)
         time.sleep(args.interval)
 
 
