@@ -46,3 +46,6 @@ In this file, I will document my daily progress, challenges faced, and resources
 
 **What I did:**
 - Added command-line argument parsing using the `argparse` library. This allows users to specify options like update interval and the number of bars for the usage display.
+- Added the disk usage monitoring feature 
+- Improved the code structure by organizing functions and adding comments for better readability.
+- Added logging functionality using something simpler than the `logging` library, just to get started. I created a simple logger that writes CPU, memory, and disk usage data to a CSV file at specified intervals.
