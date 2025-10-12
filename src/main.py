@@ -1,25 +1,30 @@
-import psutil
+# src/main.py
 import time
 import argparse
+import sys
+from monitor import get_usage
+from logger import log_usage
 
 
 def display_usage(cpu_usage, memory_usage, disk_usage, bars):
-    cpu_percent = cpu_usage / 100.0
-    cpu_bars = '█' * int(cpu_percent * bars) + '-' * \
-        (bars - int(cpu_percent * bars))
 
-    memory_percent = memory_usage / 100.0
-    memory_bars = '█' * int(memory_percent * bars) + \
-        '-' * (bars - int(memory_percent * bars))
+    def make_bar(usage, wanted_bars = bars):
+        percent = usage / 100.0
+        return '█' * int(percent * wanted_bars) + '-' * (wanted_bars - int(percent * wanted_bars))
 
-    disk_percent = disk_usage / 100.0
-    disk_bars = '█' * int(disk_percent * bars) + '-' * \
-        (bars - int(disk_percent * bars))
+    cpu_bars = make_bar(cpu_usage, bars)
 
-    print(f"\rCPU Usage: |{cpu_bars}| {cpu_usage:.2f}%  ", end='')
-    print(f"Memory Usage: |{memory_bars}| {memory_usage:.2f}%", end='')
-    print(f"Disk Usage: |{disk_bars}| {disk_usage:.2f}%", end='\r')
+    memory_bars = make_bar(memory_usage, bars)
 
+    disk_bars = make_bar(disk_usage, bars)
+    
+    sys.stdout.write("\r\033[K")
+    sys.stdout.write(
+        f"rCPU Usage: |{cpu_bars}| {cpu_usage:.2f}%  "
+        f"Memory Usage: |{memory_bars}| {memory_usage:.2f}%"
+        f"Disk Usage: |{disk_bars}| {disk_usage:.2f}%"
+    )
+    sys.stdout.flush()
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -41,15 +46,15 @@ def parse_args():
 
 
 def main():
-    args = parse_args()  # get command-line values
-
-    while True:
-        cpu = psutil.cpu_percent()
-        mem = psutil.virtual_memory().percent
-        disk = psutil.disk_usage('/').percent
-        display_usage(cpu, mem, disk, args.bars)
-        time.sleep(args.interval)
-
+    args = parse_args()
+    try:
+        while True:
+            cpu, mem, disk = get_usage()
+            display_usage(cpu, mem, disk, args.bars)
+            log_usage(cpu, mem, disk)
+            time.sleep(args.interval)
+    except KeyboardInterrupt:
+        print("\nExiting. Goodbye!")
 
 if __name__ == "__main__":
     main()
