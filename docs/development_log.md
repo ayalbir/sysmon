@@ -49,3 +49,10 @@ In this file, I will document my daily progress, challenges faced, and resources
 - Added the disk usage monitoring feature 
 - Improved the code structure by organizing functions and adding comments for better readability.
 - Added logging functionality using something simpler than the `logging` library, just to get started. I created a simple logger that writes CPU, memory, and disk usage data to a CSV file at specified intervals.
+
+## [15-10-2025]
+
+**What I did:**
+- Made the main.py a bit more simpler, removed the UI parts and created a separate file for the UI (ui.py).
+- Started working on the UI using the `rich` library. Created a basic layout that displays CPU, memory, and disk usage.
+- This part was done with a bit of AI help, as I am not familiar with the `rich` library.
