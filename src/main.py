@@ -1,13 +1,22 @@
 # src/main.py
 import argparse
-from monitor import get_usage
-from logger import log_usage
-from ui import run_monitor_loop
+
+# Prefer package-relative imports (works when imported as `src.main` in tests).
+# Fall back to absolute imports for running the module directly from the `src/`
+# directory.
+try:
+    from .monitor import get_usage
+    from .logger import log_usage
+    from .ui import run_monitor_loop
+except Exception:
+    from monitor import get_usage
+    from logger import log_usage
+    from ui import run_monitor_loop
 
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="SysMon – Simple system monitor"
+        description="SysMon - Simple system monitor"
     )
     parser.add_argument(
         "--interval",

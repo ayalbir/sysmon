@@ -55,4 +55,10 @@ In this file, I will document my daily progress, challenges faced, and resources
 **What I did:**
 - Made the main.py a bit more simpler, removed the UI parts and created a separate file for the UI (ui.py).
 - Started working on the UI using the `rich` library. Created a basic layout that displays CPU, memory, and disk usage.
-- This part was done with a bit of AI help, as I am not familiar with the `rich` library.
+
+## [20-10-2025]
+
+**What I did:**
+- Started writing tests for the main functionalities using `pytest`.
+- Updated the logger to ensure it appends data correctly to the log file without overwriting existing data.
+- Wrapped the main imports with try-except blocks to handle package not found errors more gracefully.
