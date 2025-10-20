@@ -62,3 +62,4 @@ In this file, I will document my daily progress, challenges faced, and resources
 - Started writing tests for the main functionalities using `pytest`.
 - Updated the logger to ensure it appends data correctly to the log file without overwriting existing data.
 - Wrapped the main imports with try-except blocks to handle package not found errors more gracefully.
+- Finalized the README.md file with installation and usage instructions (and some project info, AI generated), alongside a requirements.txt file for easy dependency management.
